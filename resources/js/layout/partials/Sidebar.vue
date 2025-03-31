@@ -23,12 +23,12 @@
 
         <!-- Brand Filter -->
         <div class="py-4">
-            <span class="block">Brand Filter</span>
+            <span class="block">Size Filter</span>
             <div class="ml-20">
-               <input type="radio" value="1" />1 <br>
-                <input type="radio" value="2" />2 <br>
-                <input type="radio" value="3" />3 <br>
-                <input type="radio" value="4" />4 <br>
+               <input type="checkbox" value="1" />1 <br>
+                <input type="checkbox" value="2" />2 <br>
+                <input type="checkbox" value="3" />3 <br>
+                <input type="checkbox" value="4" />4 <br>
             </div>
         </div>
         <hr>
@@ -36,10 +36,10 @@
         <div class="py-4">
             <span class="block">Category Filter</span>
             <div class="ml-20">
-                <input type="radio" value="1" />1 <br>
-                <input type="radio" value="2" />2 <br>
-                <input type="radio" value="3" />3 <br>
-                <input type="radio" value="4" />4 <br>
+                <input type="checkbox" value="1" />1 <br>
+                <input type="checkbox" value="2" />2 <br>
+                <input type="checkbox" value="3" />3 <br>
+                <input type="checkbox" value="4" />4 <br>
             </div>
         </div>
 

@@ -24,12 +24,12 @@ class ProductsResource extends Resource
     protected static ?string $model = Product::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
+    protected  static ?int $navigationSort = 1;
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                TextInput::make('name')->required(),
+                TextInput::make('name'),
                 Textarea::make('description'),
                 TextInput::make('price')->required()->numeric(),
                 TextInput::make('quantity')->required()->numeric(),
@@ -53,7 +53,6 @@ class ProductsResource extends Resource
                 Tables\Columns\TextColumn::make('quantity'),
                 Tables\Columns\TextColumn::make('color'),
                 Tables\Columns\TextColumn::make('size')->sortable(),
-
 
             ])
             ->filters([

@@ -1,5 +1,5 @@
 <template>
-    <Navbar/>
+    <Navbar @fetch="fetchProduct"/>
     <slot></slot>
 </template>
 
@@ -7,4 +7,9 @@
 
 import Navbar from "./partials/Navbar.vue";
 import Sidebar from "./partials/Sidebar.vue";
+
+const emit=defineEmits(['fetch']);
+const fetchProduct=()=>{
+    emit('fetch');
+}
 </script>

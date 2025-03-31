@@ -3,7 +3,7 @@
         <img alt="logo" class="h-12" src="/images/logo.png"/>
 
         <nav v-if="isLoaded" class="flex flex-row flex-wrap ">
-            <NavItem v-for="item in links" :item="item"/>
+            <NavItem v-for="item in links" :item="item" @click="$emit('fetch')"/>
         </nav>
 
         <div class="flex items-center justify-center gap-4">
@@ -64,5 +64,9 @@ onBeforeMount(async () => {
     links.value.push(...Object.values(newCats))
     isLoaded.value = true;
 })
+// const emit=defineEmits(['fetch']);
+// const fetchProduct=()=>{
+//     emit('fetch');
+// }
 
 </script>
