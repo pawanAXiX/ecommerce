@@ -41,15 +41,16 @@ class CategoryResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->query(static::$model::query()->withCount('products'))
             ->columns([
-
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('parent.name'),
-               Tables\Columns\TextColumn::make('quantity')->getStateUsing(fn(Category $category)=>$category->products->count())
+                Tables\Columns\TextColumn::make('products_count')
+
             ])
             ->filters([
-                //
+                Tables\Filters\SelectFilter::make('parent')->relationship('parent', 'name')
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),

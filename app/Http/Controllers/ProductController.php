@@ -25,9 +25,9 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-//        $validated = $request->validated();
-//        $product=Product::create($validated);
-//        return new ProductResource($product);
+        $validated = $request->validated();
+        $product=Product::create($validated);
+        return new ProductResource($product);
     }
 
     /**

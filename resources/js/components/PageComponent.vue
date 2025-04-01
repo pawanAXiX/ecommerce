@@ -1,5 +1,5 @@
 <template>
-<MainLayout @fetch="fetchProducts">
+<MainLayout >
 <div class="flex flex-row justify-between  pt-[80px] ">
     <Sidebar/>
     <CardLayout :filter="filters" :items="items"/>
@@ -32,5 +32,9 @@ const fetchProducts=async ()=>{
 onMounted(  ()=>{
     fetchProducts()
 });
+
+watch(route,(newRoute,oldRoute)=>{
+    fetchProducts();
+},{immediate:true});
 
 </script>

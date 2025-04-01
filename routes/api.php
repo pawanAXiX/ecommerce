@@ -9,7 +9,7 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::prefix('/v1/')->middleware('api')->group(function () {
-        Route::resource('products', ProductController::class,['only'=>['index','show']]);
+        Route::resource('products', ProductController::class,['only'=>['index','show','store']]);
 
 });
 

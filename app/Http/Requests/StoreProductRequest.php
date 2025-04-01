@@ -11,7 +11,7 @@ class StoreProductRequest extends FormRequest
     /**
      * Determine if the user is authorized to make this request.
      */
-    protected $redirect='/api/v1/error';
+//    protected $redirect='/api/v1/error';
     public function authorize(): bool
     {
         return true;

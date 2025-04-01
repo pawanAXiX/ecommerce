@@ -2,7 +2,7 @@
     <div class="px-5 text-p">
         <div  v-if="!item.isDropDown">
             <router-link v-if="item.isStatic" :to="item.url">{{item.name}}</router-link>
-            <router-link v-else  @click="globalVars.callable()" :to="{path:'/products/category/'+item.url,params:{slug:item.url}}">{{item.name}}</router-link>
+            <router-link v-else :to="{path:'/products/category/'+item.url,params:{slug:item.url}}">{{item.name}}</router-link>
         </div>
         <div v-else>
             <div>
@@ -15,7 +15,6 @@
 
 <script setup>
 import {ref} from "vue";
-import globalVars from "../store/globalVars.js";
 const toggle=ref(false)
 const props=defineProps(['item'])
 console.log(props.item.value);

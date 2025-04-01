@@ -39,7 +39,6 @@ class ProductsResource extends Resource
                 }),
                 TextInput::make('color'),
                 TextInput::make('slug')->disabled()
-
             ]);
     }
 

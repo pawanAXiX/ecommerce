@@ -1,11 +1,14 @@
 const global={
-    fncName:'',
-    setFncName(fncName){
-        this.fncName=fncName;
+    setAuthToken(){
+
     },
-    callable(){
-        return this.fncName();
-    }
+    getAuthToken(){
+
+    },
+    isAuthenticated(){
+
+    },
+
 }
 
 export default global;

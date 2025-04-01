@@ -13,12 +13,12 @@ class Category extends Model
     protected $fillable=['name','slug','description','image','parent_id'];
     protected function setNameAttribute($value){
         $this->attributes['name'] = ucfirst($value);
-        $this->attributes['slug'] = self::generateUniqueSlug($value ,$this->id);
+//        $this->attributes['slug'] = self::generateUniqueSlug($value ,$this->id);
     }
-    protected static function generateUniqueSlug($value ,$id){
-        $slug= "buy-" . Str::slug($value)."-".$id;
-        return $slug;
-    }
+//    protected static function generateUniqueSlug($value ,$id){
+//        $slug= "buy-" . Str::slug($value)."-".$id;
+//        return $slug;
+//    }
 
     public function products(){
         return $this->hasMany(Product::class);
