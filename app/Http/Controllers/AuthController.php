@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
+use App\Http\Requests\LogoutRequest;
 use App\Services\UserService;
 use Illuminate\Http\Request;
 
@@ -19,6 +20,11 @@ class AuthController extends Controller
             'message'=>'Success',
             'token'=>$token,
         ],202);
+    }
+
+    public function logout(LogoutRequest $request)
+    {
+        return response()->json(UserService::revokeAuthToken($request));
     }
 }
 
