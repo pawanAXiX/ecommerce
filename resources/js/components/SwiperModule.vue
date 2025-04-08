@@ -28,13 +28,13 @@
 <script setup>
 import {Swiper,SwiperSlide} from "swiper/vue";
 import {onBeforeMount, onMounted, ref} from "vue";
-import ProductService from "../services/ProductService.js";
 import {Pagination,Navigation} from "swiper/modules";
+import {apiCall} from "../store/api.js";
 
 const lists =ref([]);
 
 onBeforeMount(async ()=>{
-    let items= await ProductService.getProducts();
+    let items= await apiCall.fetchProducts();
     items.map((item)=>{
 
         lists.value.push({

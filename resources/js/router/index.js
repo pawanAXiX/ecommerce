@@ -4,6 +4,7 @@ import Products from "../pages/Products.vue";
 import Home from "../pages/Home.vue";
 import PageComponent from "../components/PageComponent.vue";
 import Category from "../pages/Category.vue";
+import Login from "../pages/Login.vue";
 
 const routes=[
     {
@@ -12,23 +13,28 @@ const routes=[
       path:'/',
     },
     {
+        name:'Login',
+        component: Login,
+        path:'/login'
+    },
+    {
         name: 'Products',
         path: '/products',
         component: Products,
     },
     {
         name:'Category',
-        path:'/products/category',
-        props:true,
+        path:'/products/category/:slug',
         component:Category,
-        children:[
-            {
-
-                path:':slug',
-                component:Category,
-                props:true
-            }
-        ]
+        props:true,
+        // children:[
+        //     {
+        //         name:'Subpages',
+        //         path:':slug',
+        //         component:Category,
+        //         props:true
+        //     }
+        // ]
     },
 ];
 

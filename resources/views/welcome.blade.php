@@ -18,7 +18,7 @@
         @endif
 
     </head>
-    <body >
-        <div id="app"></div>
+    <body class="w-screen h-screen" >
+        <div class="w-full h-full" id="app"></div>
     </body>
 </html>

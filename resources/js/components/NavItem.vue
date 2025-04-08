@@ -1,8 +1,8 @@
 <template>
-    <div class="px-5 text-p">
+    <div class="px-5 text-p cursor-pointer hover:text-black">
         <div  v-if="!item.isDropDown">
-            <router-link v-if="item.isStatic" :to="item.url">{{item.name}}</router-link>
-            <router-link v-else :to="{path:'/products/category/'+item.url,params:{slug:item.url}}">{{item.name}}</router-link>
+            <router-link  v-if="item.isStatic" :to="item.url">{{item.name}}</router-link>
+            <router-link v-else :to="{name:'Category',params:{slug:item.url}}">{{item.name}}</router-link>
         </div>
         <div v-else>
             <div>
