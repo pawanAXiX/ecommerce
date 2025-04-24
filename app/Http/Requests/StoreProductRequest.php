@@ -2,8 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Category;
-use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreProductRequest extends FormRequest
@@ -26,14 +24,14 @@ class StoreProductRequest extends FormRequest
     {
 
         return [
-            'name'=>['required','string'],
-            'description'=>['string'],
-            'price'=>['required','numeric'],
-            'quantity'=>['required','numeric'],
-            'category_id'=>['required','exists:categories,id','numeric'],
-            'size'=>['required','string'],
-            'image'=>['image','mimes:jpeg,png,jpg,gif,svg'],
-            'color'=>['required','string'],
+            'name' => ['required', 'string'],
+            'description' => ['string'],
+            'price' => ['required', 'numeric'],
+            'quantity' => ['required', 'numeric'],
+            'category_id' => ['required', 'exists:categories,id', 'numeric'],
+            'size' => ['required', 'string'],
+            'image' => ['image', 'mimes:jpeg,png,jpg,gif,svg'],
+            'color' => ['required', 'string'],
         ];
     }
 

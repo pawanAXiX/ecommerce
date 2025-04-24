@@ -24,7 +24,7 @@ class LogoutRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'token'=>['required','string',Rule::exists(User::class,'token')],
+            'token' => ['required', 'string', Rule::exists(User::class, 'token')],
         ];
     }
 }

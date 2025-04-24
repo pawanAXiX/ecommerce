@@ -9,7 +9,7 @@ const global={
         return localStorage.getItem("token");
     },
     isAuthenticated(){
-        return this.getAuthToken() != null;
+        return !!this.getAuthToken();
     },
 
 

@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Resources\ProductResource;
 use App\Models\Product;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 
 class ProductController extends Controller
@@ -15,27 +17,31 @@ class ProductController extends Controller
      * Display a listing of the resource.
      *
      */
-    public function index()
+    public function index(): JsonResponse
     {
-        return ProductResource::collection(Product::all());
+        $products = Cache::remember('products', 60, function () {
+            return ProductResource::collection(Product::all());
+        });
+        return response()->json($products, 201);
+
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreProductRequest $request)
+    public function store(StoreProductRequest $request): JsonResponse
     {
         $validated = $request->validated();
-        $product=Product::create($validated);
-        return new ProductResource($product);
+        $product = Product::query()->create($validated);
+        return response()->json(ProductResource::make($product), 201);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Product $product)
+    public function show(Product $product): JsonResponse
     {
-        return new ProductResource($product);
+        return response()->json(ProductResource::make($product), 201);
     }
 
     /**

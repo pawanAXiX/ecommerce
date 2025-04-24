@@ -17,5 +17,5 @@
 import {ref} from "vue";
 const toggle=ref(false)
 const props=defineProps(['item'])
-console.log(props.item.value);
+
 </script>
