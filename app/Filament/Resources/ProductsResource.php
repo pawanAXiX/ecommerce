@@ -4,9 +4,8 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ProductsResource\Pages;
 use App\Filament\Resources\ProductsResource\RelationManagers;
-use App\Models\Category;
 use App\Models\Product;
-use Filament\Forms;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -17,14 +16,14 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\DB;
-use function Laravel\Prompts\select;
 
 class ProductsResource extends Resource
 {
     protected static ?string $model = Product::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-    protected  static ?int $navigationSort = 1;
+    protected static ?int $navigationSort = 1;
+
     public static function form(Form $form): Form
     {
         return $form
@@ -33,10 +32,11 @@ class ProductsResource extends Resource
                 Textarea::make('description'),
                 TextInput::make('price')->required()->numeric(),
                 TextInput::make('quantity')->required()->numeric(),
-                Select::make('category_id')->relationship('category','name'),
-                Select::make('size')->options(function (){
-                    return DB::table('products')->select('size')->distinct()->orderBy('size')->pluck('size','size')->toArray();
+                Select::make('category_id')->relationship('category', 'name'),
+                Select::make('size')->options(function () {
+                    return DB::table('products')->select('size')->distinct()->orderBy('size')->pluck('size', 'size')->toArray();
                 }),
+                FileUpload::make('image')->image(),
                 TextInput::make('color'),
                 TextInput::make('slug')->disabled()
             ]);
@@ -55,7 +55,7 @@ class ProductsResource extends Resource
 
             ])
             ->filters([
-                Tables\Filters\SelectFilter::make('category')->relationship('category','name'),
+                Tables\Filters\SelectFilter::make('category')->relationship('category', 'name'),
                 Tables\Filters\SelectFilter::make('size')->options(function () {
                     return DB::table('products')->select('size')->distinct()->orderBy('size')->pluck('size', 'size')->toArray();
                 }),

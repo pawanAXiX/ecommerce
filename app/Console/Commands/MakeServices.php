@@ -14,7 +14,7 @@ class MakeServices extends Command
      * @var string
      */
     protected $signature = 'make:service {name}';
-    protected $files;
+
     /**
      * The console command description.
      *
@@ -22,34 +22,33 @@ class MakeServices extends Command
      */
     protected $description = 'Create a new Service class';
 
-    public function __construct(FileSystem $files){
+    public function __construct(public FileSystem $files)
+    {
         parent::__construct();
-        $this->files=$files;
     }
-
 
     /**
      * Execute the console command.
      */
     public function handle()
     {
-        $name=$this->argument('name');
-        $path=app_path('Services/'.$name.'.php');
+        $name = $this->argument('name');
+        $path = app_path('Services/' . $name . '.php');
 
-        if($this->files->exists($path)){
-            $this->error('Service '.$name.' already exists!');
+        if ($this->files->exists($path)) {
+            $this->error('Service ' . $name . ' already exists!');
             return false;
         }
-        $stub=$this->getStub($name);
-//        str_replace('{{name}}',$name,$stub);
+        $stub = $this->getStub($name);
 
         $this->files->ensureDirectoryExists(app_path('Services'));
-        $this->files->put($path,$stub);
+        $this->files->put($path, $stub);
 
-        $this->info('Service '.$name.' created successfully.');
+        $this->info('Service ' . $name . ' created successfully.');
     }
 
-    public function getStub($name){
+    public function getStub($name)
+    {
         return <<<EOT
 <?php
 namespace App\Services;

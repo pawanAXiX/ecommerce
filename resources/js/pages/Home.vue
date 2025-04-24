@@ -1,9 +1,9 @@
 <template>
-<MainLayout>
-<HomeBanner/>
-<BigCards/>
-<SlidingCards/>
-</MainLayout>
+    <MainLayout>
+        <HomeBanner/>
+        <BigCards/>
+        <SlidingCards/>
+    </MainLayout>
 </template>
 <script setup>
 

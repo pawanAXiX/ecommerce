@@ -16,7 +16,7 @@ class UserService
         if (!Hash::check($request->password, $user->password)) {
             throw ValidationException::withMessages(['password' => 'Password is Incorrect']);
         }
-        return $user->createToken('auth_token')->plainTextToken;
+        return $user->createToken('auth_token',['*'],now()->addMinute(30))->plainTextToken;
     }
 
     public static function revokeAuthToken($request): array

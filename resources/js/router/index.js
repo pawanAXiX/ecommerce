@@ -2,37 +2,36 @@ import {createRouter, createWebHistory} from "vue-router";
 
 import Products from "../pages/Products.vue";
 import Home from "../pages/Home.vue";
-import PageComponent from "../components/PageComponent.vue";
 import Category from "../pages/Category.vue";
 import Login from "../pages/Login.vue";
 import {authStore} from "../store/authStore.js";
 
-const routes=[
+const routes = [
     {
-      name:'Home',
-      component:Home,
-      path:'/',
+        name: 'Home',
+        component: Home,
+        path: '/',
     },
     {
-        name:'Login',
+        name: 'Login',
         component: Login,
-        path:'/login'
+        path: '/login'
     },
 
     {
         name: 'Products',
         path: '/products',
         component: Products,
-        meta:{
+        meta: {
             requiresAuth: true
         }
     },
     {
-        name:'Category',
-        path:'/products/category/:slug',
-        component:Category,
-        props:true,
-        meta:{
+        name: 'Category',
+        path: '/products/category/:slug',
+        component: Category,
+        props: true,
+        meta: {
             requiresAuth: true
         }
         // children:[
@@ -46,18 +45,16 @@ const routes=[
     },
 ];
 
-const router=createRouter({
-    history:createWebHistory(),
-    routes:routes,
+const router = createRouter({
+    history: createWebHistory(),
+    routes: routes,
 })
 
-router.beforeEach((to,from,next)=>{
-    if(to.matched.some(record=>record.meta.requiresAuth))
-    {
-        if(!authStore.isAuthenticated)
-        {
+router.beforeEach((to, from, next) => {
+    if (to.matched.some(record => record.meta.requiresAuth)) {
+        if (!authStore.isAuthenticated) {
             console.log(authStore.isAuthenticated)
-            return next({path:'/login'});
+            return next({path: '/login'});
         }
         return next();
     }
